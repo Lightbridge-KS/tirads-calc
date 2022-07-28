@@ -10,8 +10,6 @@ css: "css/style.css"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
-here::i_am("app-tirads-calc.qmd")
 # pak::pkg_install("Lightbridge-KS/radcalc")
 library(here)
 library(shiny)
