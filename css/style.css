@@ -1,0 +1,16 @@
+h2.anchored {
+    color: #0b5394;
+}
+
+.control-label {
+    color: #5431af;
+}
+
+.results-main {
+    font-size: 1.5em;
+    /* color: maroon; */
+    /* text-align: center; */
+    /* border: cornflowerblue;
+    border-style: solid;
+    border-radius: 30px; */
+}

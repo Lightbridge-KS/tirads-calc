@@ -1,0 +1,244 @@
+---
+title: "TIRADS Calculator"
+format: html
+server: shiny
+theme: flatly
+toc: true
+css: "css/style.css"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+here::i_am("app-tirads-calc.qmd")
+# pak::pkg_install("Lightbridge-KS/radcalc")
+library(here)
+library(shiny)
+library(purrr)
+
+width_choices <- "400px"
+```
+
+
+```{r tirads_choices}
+tirads_choices <- list(
+  composition = c(
+    "Cystic or almost completely cystic (0)" = "cystic",
+    "Spongiform (0)" = "spongiform",
+    "Mixed cystic and solid (1)" = "mixed",
+    "Solid or almost completely solid (2)" = "solid"
+  ),
+  echogenicity = c(
+    "Anechoic (0)" = "an",
+    "Hyperechoic or Isoechoic (1)" = "hyper",
+    "Hypoechoic (2)" = "hypo",
+    "Very hypoechoic (3)" = "very-hypo"
+  ),
+  shape = c(
+    "Wider-than-tall (0)" = "wider",
+    "Taller-than-wide (3)" = "taller"
+  ),
+  margin = c(
+    "Smooth (0)" = "smooth",
+    "Ill-defined (0)" = "ill-defined",
+    "Lobulated or Irregular (2)" = "lobulated",
+    "Extrathyroidal extension (3)" = "extra"
+  ),
+  echogenic_foci = c(
+    "None or Large comet-tail artifacts (0)" = "none",
+    "Macrocalcification (1)" = "macro-calc",
+    "Rim calcification (2)" = "rim-calc",
+    "Punctate echogenic foci (3)" = "punctate"
+  )
+)
+```
+
+```{r tirads_choices_inv}
+# Invert Names
+tirads_choices_inv <- tirads_choices |>  purrr::map(~setNames(names(.x), .x))
+```
+
+
+## Categories
+
+```{r radioButtons-composition}
+radioButtons("composition", tags$b("Composition"), 
+             choices = tirads_choices$composition,
+             selected = character(0), 
+             width = width_choices)
+```
+
+---
+
+```{r radioButtons-echogenicity}
+radioButtons("echogenicity", tags$b("Echogenicity"), 
+             choices = tirads_choices$echogenicity,
+             selected = character(0),
+             width = width_choices)
+```
+
+---
+
+```{r radioButtons-shape}
+radioButtons("shape", tags$b("Shape"), choices = tirads_choices$shape, 
+             selected = character(0),
+             width = width_choices)
+```
+
+---
+
+```{r radioButtons-margin}
+radioButtons("margin", tags$b("Margin"), choices = tirads_choices$margin,
+             selected = character(0),
+             width = width_choices)
+```
+
+---
+
+```{r checkboxGroupInput-echogenic_foci}
+checkboxGroupInput("echogenic_foci", tags$b("Echogenic foci"), 
+                   choices = tirads_choices$echogenic_foci, 
+                   selected = character(0),
+                   width = width_choices)
+```
+
+---
+
+```{r}
+numericInput("size_cm", tagList(tags$b("Size"), "(cm)" ), value = NA, min = 0)
+```
+
+
+## Results
+
+::: {.results-main}
+```{r ui-tirads_lv}
+uiOutput("tirads_lv")
+```
+:::
+
+
+```{r ui-points_df}
+gt::gt_output("points_df")
+```
+
+
+```{r ui-suggest}
+uiOutput("suggest")
+uiOutput("suggest_FNA")
+uiOutput("suggest_follow")
+```
+
+
+```{r ui-raw}
+# verbatimTextOutput("raw")
+```
+
+```{r server-test}
+#| context: server
+
+# output$raw <- renderPrint(list(
+#   composition = input$composition,
+#   echogenicity = input$echogenicity,
+#   shape = input$shape,
+#   margin = input$margin,
+#   echogenic_foci = input$echogenic_foci,
+#   size_cm = input$size_cm
+# ))
+```
+
+
+
+```{r server-report}
+#| context: server
+
+tirads_report <- reactive({
+  
+  req(input$composition, input$echogenicity, 
+      input$shape, input$margin, input$echogenic_foci)
+  
+  radcalc::TIRADS_calc(
+    composition = input$composition,
+    echogenicity = input$echogenicity,
+    shape = input$shape,
+    margin = input$margin,
+    echogenic_foci = input$echogenic_foci,
+    size_cm = input$size_cm
+  )
+})
+
+output$report_raw <- renderPrint(tirads_report())
+
+## TIRADS Level
+output$tirads_lv <- renderUI({
+  
+  tags$code(paste0(names(tirads_report()$level), ": ", tirads_report()$level))
+
+})
+
+## GT Table: Total Points
+output$points_df <- gt::render_gt(
+  {
+    points <- tirads_report()$points
+    points_w_sum <- c(points, total = sum(points))
+
+    points_w_sum |>
+      setNames(c(
+        "Composition", "Echogenicity",
+        "Shape", "Margin", "Echogenic foci", "Total"
+      )) |>
+      tibble::enframe("Categories", "Points") |>
+      gt::gt() |>
+      gt::tab_style(
+        style = list(
+          gt::cell_text(weight = "bold")
+        ),
+        locations = gt::cells_body(
+          columns = everything(),
+          rows = 6
+        )
+      ) |>
+      gt::tab_style(
+        style = list(
+          gt::cell_text(weight = "bold")
+        ),
+        locations = gt::cells_column_labels()
+      )
+  },
+  align = "left"
+)
+
+## Suggestions
+output$suggest <- renderUI({
+  should_FNA <- tirads_report()$should_FNA
+  should_follow <- tirads_report()$should_follow
+  
+  # Eval if neither is `NA`
+  req( !any(is.na(c(should_FNA, should_follow)) ))
+  
+  
+  li_fna <- if(should_FNA) {  
+    tags$li("FNA is advised.") 
+  } else { 
+    tags$li("FNA is NOT advised.") 
+  }
+  
+  li_follow <- if(should_follow) { 
+    tags$li("Follow-up is advised.") 
+  } else { 
+    NULL 
+  }
+  
+  tagList(
+    tags$h3("Suggestion"),
+    tags$ul(
+      li_follow,
+      li_fna
+    )
+  )
+})
+```
+
+
+
+
+
