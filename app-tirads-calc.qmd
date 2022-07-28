@@ -11,6 +11,7 @@ format:
     code-tools: 
       source: https://github.com/Lightbridge-KS/tirads-calc
 server: shiny
+bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -19,7 +20,6 @@ library(shiny)
 library(purrr)
 width_choices <- "400px"
 ```
-
 
 ```{r tirads_choices}
 tirads_choices <- list(
@@ -59,11 +59,15 @@ tirads_choices <- list(
 tirads_choices_inv <- tirads_choices |>  purrr::map(~setNames(names(.x), .x))
 ```
 
-:::{.callout-note}
+::: callout-note
 ### About
 
 This calculator was implemented from [ACR TI-RADS™](https://www.acr.org/Clinical-Resources/Reporting-and-Data-Systems/TI-RADS) for thyroid ultrasound.
 :::
+
+## Charts
+
+![ACR TI-RADS Chart to determine TI-RADS Level and Suggestions [@ACR-TIRADS-WhitePaper]](images/tirads-chart.png){#fig-tirads-chart width="80%"}
 
 
 
@@ -76,7 +80,7 @@ radioButtons("composition", tags$b("Composition"),
              width = width_choices)
 ```
 
----
+------------------------------------------------------------------------
 
 ```{r radioButtons-echogenicity}
 radioButtons("echogenicity", tags$b("Echogenicity"), 
@@ -85,7 +89,7 @@ radioButtons("echogenicity", tags$b("Echogenicity"),
              width = width_choices)
 ```
 
----
+------------------------------------------------------------------------
 
 ```{r radioButtons-shape}
 radioButtons("shape", tags$b("Shape"), choices = tirads_choices$shape, 
@@ -93,7 +97,7 @@ radioButtons("shape", tags$b("Shape"), choices = tirads_choices$shape,
              width = width_choices)
 ```
 
----
+------------------------------------------------------------------------
 
 ```{r radioButtons-margin}
 radioButtons("margin", tags$b("Margin"), choices = tirads_choices$margin,
@@ -101,7 +105,7 @@ radioButtons("margin", tags$b("Margin"), choices = tirads_choices$margin,
              width = width_choices)
 ```
 
----
+------------------------------------------------------------------------
 
 ```{r checkboxGroupInput-echogenic_foci}
 checkboxGroupInput("echogenic_foci", tags$b("Echogenic foci"), 
@@ -110,32 +114,30 @@ checkboxGroupInput("echogenic_foci", tags$b("Echogenic foci"),
                    width = width_choices)
 ```
 
----
+------------------------------------------------------------------------
 
 ```{r}
 numericInput("size_cm", tagList(tags$b("Size"), "(cm)" ), value = NA, min = 0)
 ```
 
-
 ## Results
 
-::: {.results-main}
+::: results-main
 ```{r ui-tirads_lv}
 uiOutput("tirads_lv")
 ```
 :::
 
-
 ```{r ui-points_df}
 gt::gt_output("points_df")
 ```
-
 
 ```{r ui-suggest}
 uiOutput("suggest")
 uiOutput("suggest_FNA")
 uiOutput("suggest_follow")
 ```
+
 
 
 ```{r ui-raw}
@@ -241,16 +243,11 @@ uiOutput("suggest_follow")
   })
 ```
 
-
-
 ```{r server-report}
 
 
 # output$report_raw <- renderPrint(tirads_report())
 
 ```
-
-
-
 
 

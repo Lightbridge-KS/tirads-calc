@@ -17,6 +17,25 @@ span.underline{text-decoration: underline;}
 div.column{display: inline-block; vertical-align: top; width: 50%;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -43,7 +62,8 @@ ul.task-list{list-style: none;}
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#categories" id="toc-categories" class="nav-link active" data-scroll-target="#categories">Categories</a></li>
+  <li><a href="#charts" id="toc-charts" class="nav-link active" data-scroll-target="#charts">Charts</a></li>
+  <li><a href="#categories" id="toc-categories" class="nav-link" data-scroll-target="#categories">Categories</a></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
   </ul>
 </nav>
@@ -98,6 +118,15 @@ About
 <p>This calculator was implemented from <a href="https://www.acr.org/Clinical-Resources/Reporting-and-Data-Systems/TI-RADS">ACR TI-RADS™</a> for thyroid ultrasound.</p>
 </div>
 </div>
+<section id="charts" class="level2">
+<h2 class="anchored" data-anchor-id="charts">Charts</h2>
+<div id="fig-tirads-chart" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/tirads-chart.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 1: ACR TI-RADS Chart to determine TI-RADS Level and Suggestions <span class="citation" data-cites="ACR-TIRADS-WhitePaper">(<a href="#ref-ACR-TIRADS-WhitePaper" role="doc-biblioref">Tessler et al. 2017</a>)</span></figcaption><p></p>
+</figure>
+</div>
+</section>
 <section id="categories" class="level2">
 <h2 class="anchored" data-anchor-id="categories">Categories</h2>
 <div class="cell">
@@ -457,9 +486,14 @@ ojs_define <- function(..., .session = shiny::getDefaultReactiveDomain()) {
 {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57]}},"value":[{"type":"character","attributes":{},"value":["assertthat","base","cli","colorspace","compiler","crayon","datasets","DBI","digest","dplyr","ellipsis","evaluate","fansi","fastmap","generics","ggplot2","glue","graphics","grDevices","grid","gt","gtable","htmltools","htmlwidgets","httpuv","jsonlite","knitr","later","lifecycle","magrittr","methods","mime","munsell","pillar","pkgconfig","promises","purrr","R6","Rcpp","renv","rlang","rmarkdown","rstudioapi","scales","shiny","stats","stringi","stringr","tibble","tidyselect","tools","utf8","utils","vctrs","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["0.2.1","4.2.0","3.3.0","2.0-3","4.2.0","1.5.1","4.2.0","1.1.2","0.6.29","1.0.9","0.3.2","0.15","1.0.3","1.1.0","0.1.2","3.3.6","1.6.2","4.2.0","4.2.0","4.2.0","0.6.0","0.3.0","0.5.2","1.5.4","1.6.5","1.8.0","1.39","1.3.0","1.0.1","2.0.3","4.2.0","0.12","0.5.0","1.7.0","2.0.3","1.2.0.1","0.3.4","2.5.1","1.0.8.3","0.15.5","1.0.2","2.14","0.13","1.2.0","1.7.1","4.2.0","1.7.6","1.4.0","3.1.7","1.1.2","4.2.0","1.2.2","4.2.0","0.4.1","0.31","1.8-4","2.3.5"]}]}]}
 </script>
 <!--/html_preserve-->
+
 </section>
 
-</main>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-ACR-TIRADS-WhitePaper" class="csl-entry" role="doc-biblioentry">
+Tessler, Franklin N., William D. Middleton, Edward G. Grant, Jenny K. Hoang, Lincoln L. Berland, Sharlene A. Teefey, John J. Cronan, et al. 2017. <span>“ACR Thyroid Imaging, Reporting and Data System (TI-RADS): White Paper of the ACR TI-RADS Committee.”</span> <em>Journal of the American College of Radiology: JACR</em> 14 (5): 587–95. <a href="https://doi.org/10.1016/j.jacr.2017.01.046">https://doi.org/10.1016/j.jacr.2017.01.046</a>.
+</div>
+</div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
