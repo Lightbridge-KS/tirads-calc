@@ -1,19 +1,22 @@
 ---
-title: "TIRADS Calculator"
+title: "ACR TI-RADS Calculator"
+subtitle: "A Calculator for Thyroid Imaging Reporting & Data System"
 author: "Kittipos Sirivongrungson"
 date: "`r Sys.Date()`"
-format: html
-server: shiny
 theme: flatly
 toc: true
 css: "css/style.css"
+format: 
+  html:
+    code-tools: 
+      source: https://github.com/Lightbridge-KS/tirads-calc
+server: shiny
 ---
 
 ```{r setup, include=FALSE}
 # pak::pkg_install("Lightbridge-KS/radcalc")
 library(shiny)
 library(purrr)
-
 width_choices <- "400px"
 ```
 
@@ -55,6 +58,13 @@ tirads_choices <- list(
 # Invert Names
 tirads_choices_inv <- tirads_choices |>  purrr::map(~setNames(names(.x), .x))
 ```
+
+:::{.callout-note}
+### About
+
+This calculator was implemented from [ACR TI-RADS™](https://www.acr.org/Clinical-Resources/Reporting-and-Data-Systems/TI-RADS) for thyroid ultrasound.
+:::
+
 
 
 ## Categories
@@ -143,98 +153,101 @@ uiOutput("suggest_follow")
 #   echogenic_foci = input$echogenic_foci,
 #   size_cm = input$size_cm
 # ))
+
+
+  tirads_report <- reactive({
+
+    req(input$composition, input$echogenicity,
+        input$shape, input$margin, input$echogenic_foci)
+
+    radcalc::TIRADS_calc(
+      composition = input$composition,
+      echogenicity = input$echogenicity,
+      shape = input$shape,
+      margin = input$margin,
+      echogenic_foci = input$echogenic_foci,
+      size_cm = input$size_cm
+    )
+  })
+
+
+  ## TIRADS Level
+  output$tirads_lv <- renderUI({
+
+    tags$code(paste0(names(tirads_report()$level), ": ", tirads_report()$level))
+
+  })
+
+  ## GT Table: Total Points
+  output$points_df <- gt::render_gt(
+    {
+      points <- tirads_report()$points
+      points_w_sum <- c(points, total = sum(points))
+
+      points_w_sum |>
+        setNames(c(
+          "Composition", "Echogenicity",
+          "Shape", "Margin", "Echogenic foci", "Total"
+        )) |>
+        tibble::enframe("Categories", "Points") |>
+        gt::gt() |>
+        gt::tab_style(
+          style = list(
+            gt::cell_text(weight = "bold")
+          ),
+          locations = gt::cells_body(
+            columns = everything(),
+            rows = 6
+          )
+        ) |>
+        gt::tab_style(
+          style = list(
+            gt::cell_text(weight = "bold")
+          ),
+          locations = gt::cells_column_labels()
+        )
+    },
+    align = "left"
+  )
+
+  ## Suggestions
+  output$suggest <- renderUI({
+    should_FNA <- tirads_report()$should_FNA
+    should_follow <- tirads_report()$should_follow
+
+    # Eval if neither is `NA`
+    req( !any(is.na(c(should_FNA, should_follow)) ))
+
+
+    li_fna <- if(should_FNA) {
+      tags$li("FNA is advised.")
+    } else {
+      tags$li("FNA is NOT advised.")
+    }
+
+    li_follow <- if(should_follow) {
+      tags$li("Follow-up is advised.")
+    } else {
+      NULL
+    }
+
+    tagList(
+      tags$h3("Suggestion"),
+      tags$ul(
+        li_follow,
+        li_fna
+      )
+    )
+  })
 ```
 
 
 
 ```{r server-report}
-#| context: server
 
-tirads_report <- reactive({
-  
-  req(input$composition, input$echogenicity, 
-      input$shape, input$margin, input$echogenic_foci)
-  
-  radcalc::TIRADS_calc(
-    composition = input$composition,
-    echogenicity = input$echogenicity,
-    shape = input$shape,
-    margin = input$margin,
-    echogenic_foci = input$echogenic_foci,
-    size_cm = input$size_cm
-  )
-})
 
-output$report_raw <- renderPrint(tirads_report())
+# output$report_raw <- renderPrint(tirads_report())
 
-## TIRADS Level
-output$tirads_lv <- renderUI({
-  
-  tags$code(paste0(names(tirads_report()$level), ": ", tirads_report()$level))
-
-})
-
-## GT Table: Total Points
-output$points_df <- gt::render_gt(
-  {
-    points <- tirads_report()$points
-    points_w_sum <- c(points, total = sum(points))
-
-    points_w_sum |>
-      setNames(c(
-        "Composition", "Echogenicity",
-        "Shape", "Margin", "Echogenic foci", "Total"
-      )) |>
-      tibble::enframe("Categories", "Points") |>
-      gt::gt() |>
-      gt::tab_style(
-        style = list(
-          gt::cell_text(weight = "bold")
-        ),
-        locations = gt::cells_body(
-          columns = everything(),
-          rows = 6
-        )
-      ) |>
-      gt::tab_style(
-        style = list(
-          gt::cell_text(weight = "bold")
-        ),
-        locations = gt::cells_column_labels()
-      )
-  },
-  align = "left"
-)
-
-## Suggestions
-output$suggest <- renderUI({
-  should_FNA <- tirads_report()$should_FNA
-  should_follow <- tirads_report()$should_follow
-  
-  # Eval if neither is `NA`
-  req( !any(is.na(c(should_FNA, should_follow)) ))
-  
-  
-  li_fna <- if(should_FNA) {  
-    tags$li("FNA is advised.") 
-  } else { 
-    tags$li("FNA is NOT advised.") 
-  }
-  
-  li_follow <- if(should_follow) { 
-    tags$li("Follow-up is advised.") 
-  } else { 
-    NULL 
-  }
-  
-  tagList(
-    tags$h3("Suggestion"),
-    tags$ul(
-      li_follow,
-      li_fna
-    )
-  )
-})
 ```
 
 
