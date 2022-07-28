@@ -5,10 +5,10 @@ account: kittipos
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 6707074
-bundleId: 6142222
+bundleId: 6142321
 url: https://kittipos.shinyapps.io/tirads-calc/
-when: 1659018396.66427
-lastSyncTime: 1659018396.66429
+when: 1659020297.21731
+lastSyncTime: 1659020297.21732
 quarto_version: 1.0.37
 quarto_engines: knitr
 asMultiple: FALSE
