@@ -1,5 +1,7 @@
 ---
 title: "TIRADS Calculator"
+author: "Kittipos Sirivongrungson"
+date: "`r Sys.Date()`"
 format: html
 server: shiny
 theme: flatly
