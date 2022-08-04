@@ -16,5 +16,6 @@ renv.lock
 /rsconnect/
 
 *.bib
+*.csl
 
 README.md
