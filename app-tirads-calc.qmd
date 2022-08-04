@@ -73,12 +73,21 @@ This calculator was implemented from [ACR TI-RADS™](https://www.acr.org/Clinic
 
 ## Categories
 
+::: {.panel-tabset}
+#### ✅
 ```{r radioButtons-composition}
 radioButtons("composition", tags$b("Composition"), 
              choices = tirads_choices$composition,
              selected = character(0), 
              width = width_choices)
 ```
+
+#### 🏞
+
+![Composition [@RadAssist]](./images/composition.png){#fig-composition width="80%"}
+
+:::
+
 
 ------------------------------------------------------------------------
 
