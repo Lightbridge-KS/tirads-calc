@@ -165,6 +165,13 @@ checkboxGroupInput("echogenic_foci", tags$b("Echogenic foci"),
 numericInput("size_cm", NULL, value = NA, min = 0)
 ```
 
+::: {.callout-tip collapse="true"}
+#### How to measure size ?
+
+Use maximal diameter in longitudinal, AP, or transverse plane [@ACR-TIRADS-Lexicon].
+:::
+
+
 ## Results
 
 ::: results-main
