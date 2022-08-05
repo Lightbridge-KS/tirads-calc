@@ -85,7 +85,7 @@ radioButtons("composition", tags$b("Composition"),
 
 #### 🏞
 
-![**Composition** [@RadAssist]](./images/composition.png){#fig-composition width="80%"}
+![**Composition** (adapted from [@RadAssist])](./images/composition.png){#fig-composition width="80%"}
 
 - **Spongiform:** aggregation of multiple microcystic components ≥ 50% of the volume of the nodule [@ACR-TIRADS-Lexicon].
 
@@ -94,12 +94,24 @@ radioButtons("composition", tags$b("Composition"),
 
 ------------------------------------------------------------------------
 
+::: {.panel-tabset}
+#### ✅
 ```{r radioButtons-echogenicity}
 radioButtons("echogenicity", tags$b("Echogenicity"), 
              choices = tirads_choices$echogenicity,
              selected = character(0),
              width = width_choices)
 ```
+
+#### 🏞
+
+![**Echogenicity** (adapted from [@RadAssist; @RadKey-ThyroidCyst])](./images/echogenicity.png){#fig-echogenicity width="100%"}
+
+- **Hyper/iso/hypoechoic:** relative to surrounding *thyroid tissue* [@ACR-TIRADS-Lexicon].
+  
+- **Very hypoechoic:** hypoechoic relative to adjacent *neck musculature* [@ACR-TIRADS-Lexicon].
+
+:::
 
 ------------------------------------------------------------------------
 

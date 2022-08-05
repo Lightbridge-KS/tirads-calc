@@ -173,7 +173,7 @@ About
 <div id="fig-composition" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="./images/composition.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 2: <strong>Composition</strong> <span class="citation" data-cites="RadAssist">[<a href="#ref-RadAssist" role="doc-biblioref">2</a>]</span></figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure 2: <strong>Composition</strong> (adapted from <span class="citation" data-cites="RadAssist">[<a href="#ref-RadAssist" role="doc-biblioref">2</a>]</span>)</figcaption><p></p>
 </figure>
 </div>
 <ul>
@@ -183,6 +183,10 @@ About
 </div>
 </div>
 <hr>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">✅</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">🏞</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div class="cell">
 <div class="cell-output-display">
 <div id="echogenicity" style="width:400px;" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="echogenicity-label">
@@ -215,6 +219,21 @@ About
 </label>
 </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div id="fig-echogenicity" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="./images/echogenicity.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 3: <strong>Echogenicity</strong> (adapted from <span class="citation" data-cites="RadAssist RadKey-ThyroidCyst">[<a href="#ref-RadAssist" role="doc-biblioref">2</a>,<a href="#ref-RadKey-ThyroidCyst" role="doc-biblioref">4</a>]</span>)</figcaption><p></p>
+</figure>
+</div>
+<ul>
+<li><p><strong>Hyper/iso/hypoechoic:</strong> relative to surrounding <em>thyroid tissue</em> <span class="citation" data-cites="ACR-TIRADS-Lexicon">[<a href="#ref-ACR-TIRADS-Lexicon" role="doc-biblioref">3</a>]</span>.</p></li>
+<li><p><strong>Very hypoechoic:</strong> hypoechoic relative to adjacent <em>neck musculature</em> <span class="citation" data-cites="ACR-TIRADS-Lexicon">[<a href="#ref-ACR-TIRADS-Lexicon" role="doc-biblioref">3</a>]</span>.</p></li>
+</ul>
 </div>
 </div>
 </div>
@@ -512,10 +531,13 @@ ojs_define <- function(..., .session = shiny::getDefaultReactiveDomain()) {
 <div class="csl-left-margin">[1] </div><div class="csl-right-inline">F.N. Tessler, W.D. Middleton, E.G. Grant, J.K. Hoang, L.L. Berland, S.A. Teefey, J.J. Cronan, M.D. Beland, T.S. Desser, M.C. Frates, L.W. Hammers, U.M. Hamper, J.E. Langer, C.C. Reading, L.M. Scoutt, A.T. Stavros, ACR thyroid imaging, reporting and data system (TI-RADS): White paper of the ACR TI-RADS committee, Journal of the American College of Radiology: JACR. 14 (2017) 587–595. https://doi.org/<a href="https://doi.org/10.1016/j.jacr.2017.01.046">10.1016/j.jacr.2017.01.046</a>.</div>
 </div>
 <div id="ref-RadAssist" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">[2] </div><div class="csl-right-inline">A. van der L. Habib Ahmad, The radiology assistant : TI-RADS - thyroid imaging reporting and data system, (n.d.). <a href="https://radiologyassistant.nl/head-neck/ti-rads/ti-rads">https://radiologyassistant.nl/head-neck/ti-rads/ti-rads</a>.</div>
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">A. van der L. Habib Ahmad, The radiology assistant: TI-RADS - thyroid imaging reporting and data system, (n.d.). <a href="https://radiologyassistant.nl/head-neck/ti-rads/ti-rads">https://radiologyassistant.nl/head-neck/ti-rads/ti-rads</a>.</div>
 </div>
 <div id="ref-ACR-TIRADS-Lexicon" class="csl-entry" role="doc-biblioentry">
 <div class="csl-left-margin">[3] </div><div class="csl-right-inline">E.G. Grant, F.N. Tessler, J.K. Hoang, J.E. Langer, M.D. Beland, L.L. Berland, J.J. Cronan, T.S. Desser, M.C. Frates, U.M. Hamper, W.D. Middleton, C.C. Reading, L.M. Scoutt, A.T. Stavros, S.A. Teefey, Thyroid ultrasound reporting lexicon: White paper of the ACR thyroid imaging, reporting and data system (TIRADS) committee, Journal of the American College of Radiology: JACR. 12 (2015) 1272–1279. https://doi.org/<a href="https://doi.org/10.1016/j.jacr.2015.07.011">10.1016/j.jacr.2015.07.011</a>.</div>
+</div>
+<div id="ref-RadKey-ThyroidCyst" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">Z. Fryšák, Radiology key: Thyroid cysts, (2017). <a href="https://radiologykey.com/thyroid-cysts">https://radiologykey.com/thyroid-cysts</a>.</div>
 </div>
 </div></section></div></main>
 <!-- /main column -->
