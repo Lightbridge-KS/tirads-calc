@@ -14,11 +14,11 @@ renv.lock
 /.github/
 
 /rsconnect/
+/recipes/
 
 LICENSE.md
 
 *.bib
 *.csl
-*.key
 
 README.md
