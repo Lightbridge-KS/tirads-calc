@@ -63,7 +63,15 @@ div.csl-indent {
    
   <ul>
   <li><a href="#charts" id="toc-charts" class="nav-link active" data-scroll-target="#charts">Charts</a></li>
-  <li><a href="#categories" id="toc-categories" class="nav-link" data-scroll-target="#categories">Categories</a></li>
+  <li><a href="#categories" id="toc-categories" class="nav-link" data-scroll-target="#categories">Categories</a>
+  <ul class="collapse">
+  <li><a href="#composition" id="toc-composition" class="nav-link" data-scroll-target="#composition">Composition</a></li>
+  <li><a href="#echogenicity" id="toc-echogenicity" class="nav-link" data-scroll-target="#echogenicity">Echogenicity</a></li>
+  <li><a href="#shape" id="toc-shape" class="nav-link" data-scroll-target="#shape">Shape</a></li>
+  <li><a href="#margin" id="toc-margin" class="nav-link" data-scroll-target="#margin">Margin</a></li>
+  <li><a href="#echogenic-foci" id="toc-echogenic-foci" class="nav-link" data-scroll-target="#echogenic-foci">Echogenic foci</a></li>
+  <li><a href="#size-cm" id="toc-size-cm" class="nav-link" data-scroll-target="#size-cm">Size (cm)</a></li>
+  </ul></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
   </ul>
 </nav>
@@ -129,6 +137,8 @@ About
 </section>
 <section id="categories" class="level2">
 <h2 class="anchored" data-anchor-id="categories">Categories</h2>
+<section id="composition" class="level3">
+<h3 class="anchored" data-anchor-id="composition">Composition</h3>
 <div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">✅</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">🏞</a></li></ul>
 <div class="tab-content">
@@ -136,9 +146,7 @@ About
 <div class="cell">
 <div class="cell-output-display">
 <div id="composition" style="width:400px;" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="composition-label">
-<label class="control-label" id="composition-label" for="composition">
-<b>Composition</b>
-</label>
+<label class="control-label" id="composition-label" for="composition"></label>
 <div class="shiny-options-group">
 <div class="radio">
 <label>
@@ -182,7 +190,9 @@ About
 </div>
 </div>
 </div>
-<hr>
+</section>
+<section id="echogenicity" class="level3">
+<h3 class="anchored" data-anchor-id="echogenicity">Echogenicity</h3>
 <div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">✅</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">🏞</a></li></ul>
 <div class="tab-content">
@@ -190,9 +200,7 @@ About
 <div class="cell">
 <div class="cell-output-display">
 <div id="echogenicity" style="width:400px;" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="echogenicity-label">
-<label class="control-label" id="echogenicity-label" for="echogenicity">
-<b>Echogenicity</b>
-</label>
+<label class="control-label" id="echogenicity-label" for="echogenicity"></label>
 <div class="shiny-options-group">
 <div class="radio">
 <label>
@@ -237,13 +245,17 @@ About
 </div>
 </div>
 </div>
-<hr>
+</section>
+<section id="shape" class="level3">
+<h3 class="anchored" data-anchor-id="shape">Shape</h3>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">✅</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">🏞</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div class="cell">
 <div class="cell-output-display">
 <div id="shape" style="width:400px;" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="shape-label">
-<label class="control-label" id="shape-label" for="shape">
-<b>Shape</b>
-</label>
+<label class="control-label" id="shape-label" for="shape"></label>
 <div class="shiny-options-group">
 <div class="radio">
 <label>
@@ -261,7 +273,23 @@ About
 </div>
 </div>
 </div>
-<hr>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div id="fig-shape" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="./images/shape.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 4: <strong>Shape: taller-than-wide</strong> <span class="citation" data-cites="ACR-TIRADS-Lexicon">[<a href="#ref-ACR-TIRADS-Lexicon" role="doc-biblioref">3</a>]</span></figcaption><p></p>
+</figure>
+</div>
+<ul>
+<li><strong>taller-than-wide:</strong> ratio of <code>AP / horizontal diameter &gt; 1</code> when measured in the transverse plane <span class="citation" data-cites="ACR-TIRADS-Lexicon">[<a href="#ref-ACR-TIRADS-Lexicon" role="doc-biblioref">3</a>]</span>.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="margin" class="level3">
+<h3 class="anchored" data-anchor-id="margin">Margin</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div id="margin" style="width:400px;" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="margin-label">
@@ -297,7 +325,9 @@ About
 </div>
 </div>
 </div>
-<hr>
+</section>
+<section id="echogenic-foci" class="level3">
+<h3 class="anchored" data-anchor-id="echogenic-foci">Echogenic foci</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div id="echogenic_foci" style="width:400px;" class="form-group shiny-input-checkboxgroup shiny-input-container" role="group" aria-labelledby="echogenic_foci-label">
@@ -333,18 +363,18 @@ About
 </div>
 </div>
 </div>
-<hr>
+</section>
+<section id="size-cm" class="level3">
+<h3 class="anchored" data-anchor-id="size-cm">Size (cm)</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div class="form-group shiny-input-container">
-<label class="control-label" id="size_cm-label" for="size_cm">
-<b>Size</b>
-(cm)
-</label>
+<label class="control-label shiny-label-null" for="size_cm" id="size_cm-label"></label>
 <input id="size_cm" type="number" class="form-control" value="NA" min="0">
 </div>
 </div>
 </div>
+</section>
 </section>
 <section id="results" class="level2">
 <h2 class="anchored" data-anchor-id="results">Results</h2>

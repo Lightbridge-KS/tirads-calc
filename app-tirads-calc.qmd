@@ -74,10 +74,12 @@ This calculator was implemented from [ACR TI-RADS™](https://www.acr.org/Clinic
 
 ## Categories
 
+### Composition
+
 ::: {.panel-tabset}
 #### ✅
 ```{r radioButtons-composition}
-radioButtons("composition", tags$b("Composition"), 
+radioButtons("composition", "", 
              choices = tirads_choices$composition,
              selected = character(0), 
              width = width_choices)
@@ -92,12 +94,13 @@ radioButtons("composition", tags$b("Composition"),
 :::
 
 
-------------------------------------------------------------------------
+
+### Echogenicity
 
 ::: {.panel-tabset}
 #### ✅
 ```{r radioButtons-echogenicity}
-radioButtons("echogenicity", tags$b("Echogenicity"), 
+radioButtons("echogenicity", "", 
              choices = tirads_choices$echogenicity,
              selected = character(0),
              width = width_choices)
@@ -113,15 +116,29 @@ radioButtons("echogenicity", tags$b("Echogenicity"),
 
 :::
 
-------------------------------------------------------------------------
 
+
+### Shape
+
+::: {.panel-tabset}
+#### ✅
 ```{r radioButtons-shape}
-radioButtons("shape", tags$b("Shape"), choices = tirads_choices$shape, 
+radioButtons("shape", "", choices = tirads_choices$shape, 
              selected = character(0),
              width = width_choices)
 ```
 
-------------------------------------------------------------------------
+#### 🏞
+
+![**Shape: taller-than-wide** [@ACR-TIRADS-Lexicon]](./images/shape.png){#fig-shape width="80%"}
+
+- **taller-than-wide:** ratio of `AP / horizontal diameter > 1` when measured in the transverse plane [@ACR-TIRADS-Lexicon].
+
+:::
+
+
+
+### Margin
 
 ```{r radioButtons-margin}
 radioButtons("margin", tags$b("Margin"), choices = tirads_choices$margin,
@@ -129,7 +146,9 @@ radioButtons("margin", tags$b("Margin"), choices = tirads_choices$margin,
              width = width_choices)
 ```
 
-------------------------------------------------------------------------
+
+
+### Echogenic foci
 
 ```{r checkboxGroupInput-echogenic_foci}
 checkboxGroupInput("echogenic_foci", tags$b("Echogenic foci"), 
@@ -138,10 +157,12 @@ checkboxGroupInput("echogenic_foci", tags$b("Echogenic foci"),
                    width = width_choices)
 ```
 
-------------------------------------------------------------------------
+
+
+### Size (cm)
 
 ```{r}
-numericInput("size_cm", tagList(tags$b("Size"), "(cm)" ), value = NA, min = 0)
+numericInput("size_cm", NULL, value = NA, min = 0)
 ```
 
 ## Results
