@@ -17,5 +17,6 @@ renv.lock
 
 *.bib
 *.csl
+*.key
 
 README.md
