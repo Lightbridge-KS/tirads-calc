@@ -10,6 +10,7 @@ format:
   html:
     code-tools: 
       source: https://github.com/Lightbridge-KS/tirads-calc
+number-sections: false
 server: shiny
 bibliography: references.bib
 csl: elsevier-with-titles.csl
@@ -66,10 +67,11 @@ tirads_choices_inv <- tirads_choices |>  purrr::map(~setNames(names(.x), .x))
 This calculator was implemented from [ACR TI-RADS™](https://www.acr.org/Clinical-Resources/Reporting-and-Data-Systems/TI-RADS) for thyroid ultrasound.
 :::
 
-## Charts
+::: {.callout-tip collapse=true}
+### Expand to see TI-RADS Charts
 
 ![ACR TI-RADS Chart to determine TI-RADS Level and Suggestions [@ACR-TIRADS-WhitePaper]](images/tirads-chart.png){#fig-tirads-chart width="80%"}
-
+:::
 
 
 ## Categories
@@ -87,7 +89,7 @@ radioButtons("composition", "",
 
 #### 🏞
 
-![**Composition** (adapted from [@RadAssist])](./images/composition.png){#fig-composition width="80%"}
+![**Composition** [@RadAssist]](./images/composition.png){#fig-composition width="80%"}
 
 - **Spongiform:** aggregation of multiple microcystic components ≥ 50% of the volume of the nodule [@ACR-TIRADS-Lexicon].
 
@@ -108,7 +110,7 @@ radioButtons("echogenicity", "",
 
 #### 🏞
 
-![**Echogenicity** (adapted from [@RadAssist; @RadKey-ThyroidCyst])](./images/echogenicity.png){#fig-echogenicity width="100%"}
+![**Echogenicity** [@RadAssist; @RadKey-ThyroidCyst]](./images/echogenicity.png){#fig-echogenicity width="100%"}
 
 - **Hyper/iso/hypoechoic:** relative to surrounding *thyroid tissue* [@ACR-TIRADS-Lexicon].
   
@@ -138,7 +140,7 @@ radioButtons("shape", "", choices = tirads_choices$shape,
 
 
 
-### Margin
+### Margin {#sec-margin}
 
 ::: {.panel-tabset}
 #### ✅
@@ -168,14 +170,30 @@ radioButtons("margin", "", choices = tirads_choices$margin,
 
 ### Echogenic foci
 
+::: {.panel-tabset}
+#### ✅
 ```{r checkboxGroupInput-echogenic_foci}
-checkboxGroupInput("echogenic_foci", tags$b("Echogenic foci"), 
+checkboxGroupInput("echogenic_foci", tags$b("Choose All That Apply"), 
                    choices = tirads_choices$echogenic_foci, 
                    selected = character(0),
                    width = width_choices)
 ```
 
+#### 🏞
 
+![**Echogenic foci** [@ACR-TIRADS-Lexicon; @RadAssist]](./images/echogenic-foci.png){#fig-echogenic-foci width="80%"}
+
+**Definition** [@ACR-TIRADS-Lexicon; @ACR-TIRADS-WhitePaper]
+
+-   **Large comet-tail artifacts:** echogenic foci with *V-shaped echoes* > 1 mm deep to them. They are associated with colloid and are strongly indicative of benignity when found within the cystic components of thyroid nodules.
+
+-   **Macrocalcifications:** coarse echogenic foci accompanied by **_acoustic shadowing_**. Published data shows a weakly positive relationship with malignancy.
+
+-   **Peripheral (rim) calcifications:** lie along all or part of a nodule’s margin. Publications suggest that they are more strongly associated with malignancy than macrocalcifications. *Interrupted* peripheral calcifications qualifies as a *lobulated* margin (see [@sec-margin]).
+
+-   **Punctate echogenic foci:** “Dot-like” foci smaller than macrocalcifications and are **_nonshadowing_**. In the solid components of thyroid nodules, they may correspond to the psammomatous calcifications associated with papillary cancers; therefore, considered *highly suspicious*.
+
+:::
 
 ### Size (cm)
 
