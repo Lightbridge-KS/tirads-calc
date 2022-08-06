@@ -140,13 +140,31 @@ radioButtons("shape", "", choices = tirads_choices$shape,
 
 ### Margin
 
+::: {.panel-tabset}
+#### ✅
 ```{r radioButtons-margin}
-radioButtons("margin", tags$b("Margin"), choices = tirads_choices$margin,
+radioButtons("margin", "", choices = tirads_choices$margin,
              selected = character(0),
              width = width_choices)
 ```
 
+#### 🏞
 
+![**Margin** [@ACR-TIRADS-Lexicon; @ACR-TIRADS-UserGuide; @RadAssist]](./images/margin.png){#fig-margin width="80%"} 
+
+**Definition** [@ACR-TIRADS-Lexicon]
+
+- **Smooth:** uninterrupted, well-defined, curvilinear edge typically forming a spherical or elliptical shape.
+
+- **Irregular margin:** spiculated, jagged, or with sharp angles with or without clear soft tissue protrusions into the parenchyma.
+
+- **Lobulated:** border has focal rounded soft tissue protrusions that extend into the adjacent parenchyma.
+
+- **Ill-defined:** border of the nodule is difficult to distinguish from thyroid parenchyma; the nodule lacks irregular or lobulated margins.
+
+- **Extrathyroidal extension:** nodule extends through the thyroid capsule.
+
+:::
 
 ### Echogenic foci
 
