@@ -11,14 +11,14 @@
 /renv/
 renv.lock
 
-/.github/
+.github
 
-/rsconnect/
-/recipes/
+rsconnect
+recipes
 
 LICENSE.md
 
-*.bib
-*.csl
+references.bib
+elsevier-with-titles.csl
 
 README.md
