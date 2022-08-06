@@ -70,11 +70,15 @@ This calculator was implemented from [ACR TI-RADS™](https://www.acr.org/Clinic
 ::: {.callout-tip collapse=true}
 ### Expand to see TI-RADS Charts
 
-![ACR TI-RADS Chart to determine TI-RADS Level and Suggestions [@ACR-TIRADS-WhitePaper]](images/tirads-chart.png){#fig-tirads-chart width="80%"}
+This calculator was implemented using the following [@fig-tirads-chart] algorithm.
+
+![ACR TI-RADS Chart to determine TI-RADS Level and Suggestions [@ACR-TIRADS-WhitePaper]](images/tirads-chart.png){#fig-tirads-chart width="100%"}
 :::
 
 
 ## Categories
+
+Select your option from "✅" tab or see example images from "🏞" tab.
 
 ### Composition
 
@@ -89,7 +93,7 @@ radioButtons("composition", "",
 
 #### 🏞
 
-![**Composition** [@RadAssist]](./images/composition.png){#fig-composition width="80%"}
+![**Composition** [@RadAssist]](./images/composition.png){#fig-composition width="100%"}
 
 - **Spongiform:** aggregation of multiple microcystic components ≥ 50% of the volume of the nodule [@ACR-TIRADS-Lexicon].
 
@@ -132,7 +136,7 @@ radioButtons("shape", "", choices = tirads_choices$shape,
 
 #### 🏞
 
-![**Shape: taller-than-wide** [@ACR-TIRADS-Lexicon]](./images/shape.png){#fig-shape width="80%"}
+![**Shape: taller-than-wide** [@ACR-TIRADS-Lexicon]](./images/shape.png){#fig-shape width="100%"}
 
 - **taller-than-wide:** ratio of `AP / horizontal diameter > 1` when measured in the transverse plane [@ACR-TIRADS-Lexicon].
 
@@ -152,7 +156,7 @@ radioButtons("margin", "", choices = tirads_choices$margin,
 
 #### 🏞
 
-![**Margin** [@ACR-TIRADS-Lexicon; @ACR-TIRADS-UserGuide; @RadAssist]](./images/margin.png){#fig-margin width="80%"} 
+![**Margin** [@ACR-TIRADS-Lexicon; @ACR-TIRADS-UserGuide; @RadAssist]](./images/margin.png){#fig-margin width="100%"} 
 
 **Definition** [@ACR-TIRADS-Lexicon]
 
@@ -181,7 +185,7 @@ checkboxGroupInput("echogenic_foci", tags$b("Choose All That Apply"),
 
 #### 🏞
 
-![**Echogenic foci** [@ACR-TIRADS-Lexicon; @RadAssist]](./images/echogenic-foci.png){#fig-echogenic-foci width="80%"}
+![**Echogenic foci** [@ACR-TIRADS-Lexicon; @RadAssist]](./images/echogenic-foci.png){#fig-echogenic-foci width="100%"}
 
 **Definition** [@ACR-TIRADS-Lexicon; @ACR-TIRADS-WhitePaper]
 
@@ -204,7 +208,7 @@ numericInput("size_cm", NULL, value = NA, min = 0)
 ::: {.callout-tip collapse="true"}
 #### How to measure size ?
 
-Use maximal diameter in longitudinal, AP, or transverse plane [@ACR-TIRADS-Lexicon].
+The nodule should be measured using **maximal diameter** in longitudinal, AP, or transverse plane [@ACR-TIRADS-Lexicon].
 :::
 
 
