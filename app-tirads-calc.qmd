@@ -10,11 +10,11 @@ format:
   html:
     code-tools: 
       source: https://github.com/Lightbridge-KS/tirads-calc
-include-in-header: header.html
+include-in-header: assets/header.html
 number-sections: false
 server: shiny
-bibliography: references.bib
-csl: elsevier-with-titles.csl
+bibliography: assets/references.bib
+csl: assets/elsevier-with-titles.csl
 ---
 
 ```{r setup, include=FALSE}
