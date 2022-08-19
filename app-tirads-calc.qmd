@@ -10,6 +10,7 @@ format:
   html:
     code-tools: 
       source: https://github.com/Lightbridge-KS/tirads-calc
+include-in-header: header.html
 number-sections: false
 server: shiny
 bibliography: references.bib
@@ -60,6 +61,9 @@ tirads_choices <- list(
 # Invert Names
 tirads_choices_inv <- tirads_choices |>  purrr::map(~setNames(names(.x), .x))
 ```
+
+
+
 
 ::: callout-note
 ### About
