@@ -1,7 +1,7 @@
 ---
 title: "ACR TI-RADS Calculator"
-subtitle: "A Calculator for Thyroid Imaging Reporting & Data System <img src='images/cover.png' align='right' height='100'/>"
-title-block-banner: false
+subtitle: "A Calculator for Thyroid Imaging Reporting & Data System <img src='images/cover.png' align='right' height='90'/>"
+title-block-banner: true
 author: "Kittipos Sirivongrungson"
 date: "`r Sys.Date()`"
 theme: flatly
